@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find My Major</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        .question {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .question-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .question-group .question {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Find My Major</h1>
+        <h2>Discover Your Ideal College Major</h2>
+        <div class="question-group">
+            <div class="question">
+                <label for="q1">Do you enjoy solving complex problems?</label>
+                <input type="radio" id="q1_yes" name="q1" value="yes"> Yes
+                <input type="radio" id="q1_no" name="q1" value="no"> No
+            </div>
+            <div class="question">
+                <label for="q2">Are you interested in working with technology?</label>
+                <input type="radio" id="q2_yes" name="q2" value="yes"> Yes
+                <input type="radio" id="q2_no" name="q2" value="no"> No
+            </div>
+            <div class="question">
+                <label for="q3">Do you enjoy helping others and working in healthcare?</label>
+                <input type="radio" id="q3_yes" name="q3" value="yes"> Yes
+                <input type="radio" id="q3_no" name="q3" value="no"> No
+            </div>
+            <div class="question">
+                <label for="q4">Are you interested in creative fields like art or design?</label>
+                <input type="radio" id="q4_yes" name="q4" value="yes"> Yes
+                <input type="radio" id="q4_no" name="q4" value="no"> No
+            </div>
+            <div class="question">
+                <label for="q5">Do you enjoy studying human behavior and social sciences?</label>
+                <input type="radio" id="q5_yes" name="q5" value="yes"> Yes
+                <input type="radio" id="q5_no" name="q5" value="no"> No
+            </div>
+            <div class="question">
+                <label for="q6">Do you have a passion for business and entrepreneurship?</label>
+                <input type="radio" id="q6_yes" name="q6" value="yes"> Yes
+                <input type="radio" id="q6_no" name="q6" value="no"> No
+            </div>
+            <div class="question">
+                <label for="q7">Are you interested in environmental and natural sciences?</label>
+                <input type="radio" id="q7_yes" name="q7" value="yes"> Yes
+                <input type="radio" id="q7_no" name="q7" value="no"> No
+            </div>
+        </div>
+        <button onclick="findMajor()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function findMajor() {
+            const q1 = document.querySelector('input[name="q1"]:checked').value;
+            const q2 = document.querySelector('input[name="q2"]:checked').value;
+            const q3 = document.querySelector('input[name="q3"]:checked').value;
+            const q4 = document.querySelector('input[name="q4"]:checked').value;
+            const q5 = document.querySelector('input[name="q5"]:checked').value;
+            const q6 = document.querySelector('input[name="q6"]:checked').value;
+            const q7 = document.querySelector('input[name="q7"]:checked').value;
+
+            let major = '';
+
+            if (q1 === 'yes' && q2 === 'yes') {
+                major = 'Computer Science or Engineering';
+            } else if (q1 === 'yes' && q2 === 'no') {
+                major = 'Mathematics or Physics';
+            } else if (q3 === 'yes') {
+                major = 'Nursing or Medicine';
+            } else if (q4 === 'yes') {
+                major = 'Art or Design';
+            } else if (q5 === 'yes') {
+                major = 'Psychology or Sociology';
+            } else if (q6 === 'yes') {
+                major = 'Business or Entrepreneurship';
+            } else if (q7 === 'yes') {
+                major = 'Environmental Science or Biology';
+            } else {
+                major = 'Liberal Arts or General Studies';
+            }
+
+            document.getElementById('result').innerText = `Based on your answers, you might enjoy studying: ${major}`;
+        }
+    </script>
+</body>
+</html>
